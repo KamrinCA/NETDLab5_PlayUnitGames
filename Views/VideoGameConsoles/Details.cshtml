@@ -1,0 +1,58 @@
+﻿<!-- Author: Kamrin Aubin
+     Last Modified: December 11, 2021
+     Description: Details View for video game consoles
+
+ -->
+
+@model NETDLab5.Models.VideoGameConsole
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Console Details</h1>
+
+<div>
+    <!-- Using DisplayFor to display the video game console in the h4 tag -->
+    <h4>View or Edit the current details of the @Html.DisplayFor(model => model.name)</h4>
+    <hr />
+    <dl class="row">
+        <!-- Every data term (label/name) has been capitalized and/or changed to be more meaningful -->
+        <dt class="col-sm-2">
+            Brand:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.brand)
+        </dd>
+        <dt class="col-sm-2">
+            Name:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.name)
+        </dd>
+        <dt class="col-sm-2">
+            Manufacturer:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.manufacturer)
+        </dd>
+        <dt class="col-sm-2">
+            New:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.isNew)
+        </dd>
+        <dt class="col-sm-2">
+            Store ID:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.store.storeID)
+        </dd>
+    </dl>
+</div>
+
+<!-- Edit and Back to list links -->
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.videoGameConsoleID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

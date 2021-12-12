@@ -1,0 +1,62 @@
+﻿<!-- Author: Kamrin Aubin
+     Last Modified: December 12, 2021
+     Description: Home Page for Play Unit Games Management Service. Display information regarding 
+                  what the web application's purpose is.
+
+ -->
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<!-- Displays text aligned to the left rather than the original "text-center" -->
+<div class="text-left">
+    <h1 class="display-4">Play Unit Games Management Service</h1>
+    <hr />
+    <!-- Welcomme Header and Message about the site -->
+    <h3>Welcome</h3>
+    <p>
+        Play Unit Games Management Service gives you the ability to manage video game stock, console stock, and store locations. This
+        is crucial for ensuring our public website conveys the proper information our customers need.
+    </p>
+    <br />
+    <!-- Uses a bootstrap alert with the colour "warning" (yellow) -->
+    <p class="alert-warning">
+        <!-- Message designed for any unauthorized users -->
+        <i>
+            Please Note: If you are not a member of Play Unit Games and are on this website,
+            please leave now. If you remain on this site, you will be prosecuted.
+        </i>
+    </p>
+    <hr />
+    <!-- Manage Video Games header -->
+    <h3>Manage Video Games</h3>
+    <p>
+        <!-- Includes a link to the Video Games Index view -->
+        If you need to Add, Edit, View, or Remove video games to reflect our current store's stock,
+        click <a asp-controller="VideoGames" asp-action="Index">here</a> or click "View Video Games"
+        in the navigation bar above.
+    </p>
+    <br />
+
+    <hr />
+    <!-- Manage Consoles header -->
+    <h3>Manage Consoles</h3>
+    <p>
+        <!-- Includes a link to the Consoles Index view -->
+        If you need to Add, Edit, View, or Remove consoles to reflect our current store's stock,
+        click <a asp-controller="VideoGameConsoles" asp-action="Index">here</a> or click "View Consoles"
+        in the navigation bar above.
+    </p>
+    <br />
+
+    <hr />
+    <!-- Manage Stores header -->
+    <h3>Manage Stores</h3>
+    <p>
+        <!-- Includes a link to the Stores Index view -->
+        If you need to Add, Edit, View, or Remove stores click <a asp-controller="Stores" asp-action="Index">here</a>
+        or click "View Stores" in the navigation bar above.
+    </p>
+
+</div>

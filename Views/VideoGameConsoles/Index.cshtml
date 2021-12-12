@@ -1,0 +1,73 @@
+﻿<!-- Author: Kamrin Aubin
+     Last Modified: December 12, 2021
+     Description: Home/Index View for video game consoles. Displays a list of all the current consoles in stock.
+
+ -->
+
+@model IEnumerable<NETDLab5.Models.VideoGameConsole>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>View All Consoles</h1>
+
+<p>
+    <!-- Link to Create View, allows user to add a console -->
+    <a asp-action="Create">Add a Console</a>
+</p>
+<!-- Makes tables have borders and represents the colour "info" (blue-ish) -->
+<table class="table table-bordered table-info">
+    <thead>
+        <tr>
+            <!-- Updated Table Headers. Makes table look nicer -->
+            <th>
+                Brand
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Manufacturer
+            </th>
+            <th>
+                New
+            </th>
+            <th>
+                Store ID
+            </th>
+            <th>Manage</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Loops through all current video game consoles in database -->
+        @foreach (var item in Model)
+        {
+            <tr>
+                <!-- Displays each video game consoles' information -->
+                <td>
+                    @Html.DisplayFor(modelItem => item.brand)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.manufacturer)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.isNew)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.store.storeID)
+                </td>
+
+                <!-- Links to Edit, View Details, and Delete/Remove Video Game Consoles -->
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.videoGameConsoleID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.videoGameConsoleID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.videoGameConsoleID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

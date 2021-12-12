@@ -1,0 +1,51 @@
+﻿<!-- Author: Kamrin Aubin
+     Last Modified: December 11, 2021
+     Description: Details View for game stores
+
+ -->
+
+@model NETDLab5.Models.Store
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Store Details</h1>
+
+<div>
+    <!-- Using DisplayFor to display the store's ID in the h4 tag -->
+    <h4>View or Edit the current details of Store #@Html.DisplayFor(model => model.storeID)</h4>
+    <hr />
+    <dl class="row">
+        <!-- Every data term (label/name) has been capitalized and/or changed to be more meaningful -->
+        <dt class="col-sm-2">
+            Country:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.country)
+        </dd>
+        <dt class="col-sm-2">
+            City:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.city)
+        </dd>
+        <dt class="col-sm-2">
+            Address:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.address)
+        </dd>
+        <dt class="col-sm-2">
+            Postal Code:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.postalCode)
+        </dd>
+    </dl>
+</div>
+<!-- Edit and Back to list links -->
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.storeID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -1,0 +1,64 @@
+﻿<!-- Author: Kamrin Aubin
+     Last Modified: December 11, 2021
+     Description: Edit View for video game consoles
+
+ -->
+
+@model NETDLab5.Models.VideoGameConsole
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit Video Game Console</h1>
+
+<!-- Using DisplayFor to display the console's name in the h4 tag -->
+<h4>Edit the @Html.DisplayFor(model => model.name)'s Details</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <!-- Create a form for editing video game consoles currently in the database -->
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="videoGameConsoleID" />
+            <div class="form-group">
+                <!-- Every label has been updated to make form labels capitalized and more meaningful -->
+                <label asp-for="brand" class="control-label">Brand</label>
+                <input asp-for="brand" class="form-control" />
+                <span asp-validation-for="brand" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="name" class="control-label">Name</label>
+                <input asp-for="name" class="form-control" />
+                <span asp-validation-for="name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="manufacturer" class="control-label">Manufacturer</label>
+                <input asp-for="manufacturer" class="form-control" />
+                <span asp-validation-for="manufacturer" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="isNew" /> New
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="storeID" class="control-label">Store ID</label>
+                <select asp-for="storeID" class="form-control" asp-items="ViewBag.storeID"></select>
+                <span asp-validation-for="storeID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Link for returning back to list of video game consoles -->
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

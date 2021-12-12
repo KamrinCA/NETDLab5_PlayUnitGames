@@ -1,0 +1,84 @@
+﻿<!-- Author: Kamrin Aubin
+     Last Modified: December 12, 2021
+     Description: Home/Index View for Video Games. Displays a list of all video games in stock.
+
+ -->
+
+@model IEnumerable<NETDLab5.Models.VideoGame>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>View All Video Games</h1>
+
+<p>
+    <!-- Link to Create View, allows user to add a video game -->
+    <a asp-action="Create">Add Video Game</a>
+</p>
+<!-- Makes tables have borders and represents the colour "info" (blue-ish) -->
+<table class="table table-bordered table-info">
+    <thead>
+        <tr>
+            <!-- Updated Table Headers. Makes table look nicer -->
+            <th>
+                Title
+            </th>
+            <th>
+                Developer
+            </th>
+            <th>
+                Publisher
+            </th>
+            <th>
+                Year of Release
+            </th>
+            <th>
+                Platform
+            </th>
+            <th>
+                New
+            </th>
+            <th>
+                Store ID
+            </th>
+            <th>Manage</th>
+        </tr>
+    </thead>
+    <tbody>
+<!-- Loops through all current video games in database -->
+@foreach (var item in Model)
+    {
+        <tr>
+            <!-- Displays each video games' information -->
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.developer)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.publisher)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.yearOfRelease)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.platform)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.isNew)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.store.storeID)
+            </td>
+            <!-- Links to Edit, View Details, and Delete/Remove Video Games -->
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.videoGameID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.videoGameID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.videoGameID">Delete</a>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

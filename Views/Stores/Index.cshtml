@@ -1,0 +1,72 @@
+﻿<!-- Author: Kamrin Aubin
+     Last Modified: December 12, 2021
+     Description: Home/Index View for game stores. Lists all current Play Unit Games stores.
+
+ -->
+
+@model IEnumerable<NETDLab5.Models.Store>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>View All Stores</h1>
+
+<p>
+    <!-- Link to Create View, allows user to add a store -->
+    <a asp-action="Create">Add a Store</a>
+</p>
+<!-- Makes tables have borders and represents the colour "info" (blue-ish) -->
+<table class="table table-bordered table-info">
+    <thead>
+        <tr>
+            <!-- Updated Table Headers. Makes table look nicer -->
+            <th>
+                Store ID
+            </th>
+            <th>
+                Country
+            </th>
+            <th>
+                City
+            </th>
+            <th>
+                Address
+            </th>
+            <th>
+                Postal Code
+            </th>
+            <th>Manage</th>
+        </tr>
+    </thead>
+    <tbody>
+        <!-- Loops through all current stores in database -->
+        @foreach (var item in Model)
+        {
+            <tr>
+                <!-- Displays each stores' information -->
+                <td>
+                    @Html.DisplayFor(modelItem => item.storeID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.country)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.city)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.postalCode)
+                </td>
+                <!-- Links to Edit, View Details, and Delete/Remove Stores -->
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.storeID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.storeID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.storeID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

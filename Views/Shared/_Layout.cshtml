@@ -1,0 +1,72 @@
+﻿<!-- Author: Kamrin Aubin
+     Last Modified: December 12, 2021
+     Description: Shared Layout. Each webpage contains the header and footer styles made in
+                  this file. 
+
+ -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Play Unit Games</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <!-- Shows the Play Unit Games Icon in the tab. Icon was made by me, no need for citation -->
+    <link rel="shortcut icon" href="~/PUG.ico" type="image/x-icon">
+</head>
+<body class="bg-light">
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-dark border-bottom box-shadow mb-3">
+            <div class="container">
+                <!-- Added clickable logo that sends user to home index page. The logo is created by me so there is no need to cite -->
+                <a asp-controller="Home" asp-action="Index"><img src="~/images/PUG.png" alt="Play Unit Games Logo" width="90" height="90" /></a>
+                <a class="navbar-brand text-light" asp-area="" asp-controller="Home" asp-action="Index"> Play Unit Games Management Service</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <ul class="navbar-nav flex-grow-1">
+                        <!-- Added About Link to navigation bar-->
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="About">About</a>
+                        </li>
+                        <!-- Added Video Game Link to navigation bar-->
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-controller="VideoGames" asp-action="Index">View Video Games</a>
+                        </li>
+                        <!-- Added Video Game Console Link to navigation bar-->
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-controller="VideoGameConsoles" asp-action="Index">View Consoles</a>
+                        </li>
+                        <!-- Added Stores Link to navigation bar-->
+                        <li class="nav-item">
+                            <a class="nav-link text-light" asp-area="" asp-controller="Stores" asp-action="Index">View Stores</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <!-- bootstrap update: added "bg-light" to the main (where text) -->
+        <main role="main" class="pb-3 bg-light">
+            @RenderBody()
+        </main>
+    </div>
+
+    <!-- Made the text light and the footer dark -->
+    <footer class="border-top footer text-light bg-dark">
+        <div class="container">
+            <!-- Added a link to the about page in the footer text -->
+            &copy; 2021 Kamrin Aubin - NETDLab5 - <a class="text-warning" asp-area="" asp-controller="Home" asp-action="About">About</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
